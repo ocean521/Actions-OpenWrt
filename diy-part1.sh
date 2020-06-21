@@ -10,10 +10,6 @@
 
 # Uncomment a feed source
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-git clone https://github.com/vernesong/OpenClash/tree/master/luci-app-openclash package/luci-app-openclash
-git clone https://github.com/frainzy1477/luci-app-clash package/luci-app-clash
-cd openwrt && ./scripts/feeds update -a
-cd openwrt && ./scripts/feeds install -a
 
 # Add a feed source
 sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
