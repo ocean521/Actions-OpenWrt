@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
+name: 添加酸酸乳\冲突\公开冲突
 
 on:
   repository_dispatch:
