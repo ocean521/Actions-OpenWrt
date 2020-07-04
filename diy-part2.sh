@@ -6,6 +6,7 @@
 # Lisence: MIT
 # Author: P3TERX
 # Blog: https://p3terx.com
+# 这里的脚本在获取feeds后执行
 #============================================================
 
 # Modify default IP
