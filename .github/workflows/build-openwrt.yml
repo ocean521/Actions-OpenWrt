@@ -21,12 +21,18 @@ on:
     types: started
 
 env:
+  # 在这里指定你的OpenWrt的仓库地址URL和分支
+  # 不同库地址（默认Lienol的https://github.com/Lienol/openwrt 或者lean的https://github.com/coolsnowwolf/lede）
+  # REPO_BRANCH: 不同分支 （以Lienol OpenWrt源码为例分支dev-master 激进；dev-19.07 OpenWrt官方平稳版；dev-lean-lede lean的源码）
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
+  # 在这里指定你的配置文件名.config
   CONFIG_FILE: .config
+  # 编译前运行自定义脚本
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
+  #SSH开关false/true
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -84,6 +90,10 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
+    # 云menuconfig（SSH 连接到 Actions进行menuconfig），去掉下面2行代码前面的#即可使用
+    # 复制 SSH 连接命令粘贴到终端内执行，或者复制链接在浏览器中打开使用网页终端。（网页终端可能会遇到黑屏的情况，按 Ctrl + C 即可）
+    # 然后输入cd openwrt && make menuconfig
+    # 完成后按快捷键Ctrl+D或执行exit命令退出，后续编译工作将自动进行。
     - name: SSH connection to Actions
       uses: P3TERX/debugger-action@master
       if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
